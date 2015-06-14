@@ -18,5 +18,7 @@
     "bourbon": "~4.2.3",
     "bootstrap-sass": "~3.3.4",
     "modernizr": "~2.8.3"
-  }
+  },
+  "homepage": "https://github.com/ChrisTheButcher/boerdam-generator",
+  "description": "Boerdam web project generator for Yeoman"
 }
