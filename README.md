@@ -1,2 +1,0 @@
-# boerdam-generator
-boerdam-generator
