@@ -1,0 +1,22 @@
+{
+  "name": "boerdam-generator",
+  "version": "1.0.0",
+  "authors": [
+    "Boerdam"
+  ],
+  "main": "gulpfile.json",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.4.0",
+    "bourbon": "~4.2.3",
+    "bootstrap-sass": "~3.3.4",
+    "modernizr": "~2.8.3"
+  }
+}

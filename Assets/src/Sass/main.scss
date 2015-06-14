@@ -1,0 +1,37 @@
+@charset 'UTF-8';
+
+// 1. Vendors
+@import "../../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "../../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+@import "../../../bower_components/bourbon/app/assets/stylesheets/bourbon";
+
+test {
+  @include triangle(12px 6px, gray lavender, up-left);
+}
+
+// 2. Configuration and helpers
+@import
+  'utils/variables',
+  'utils/functions',
+  'utils/mixins';
+
+// 3. Base stuff
+@import
+  'base/base';
+
+// 4. Layout-related sections
+@import
+  'layout/header',
+  'layout/footer';
+
+// 5. Components
+@import
+  'components/buttons';
+
+// 6. Page-specific styles
+@import
+  'pages/home';
+
+// 7. Themes
+@import
+  'themes/default';
