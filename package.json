@@ -1,18 +1,23 @@
 {
-  "name": "boerdam-generator",
+  "name": "generator-boerdam",
   "version": "1.0.0",
   "description": "Boerdam web project generator for Yeoman",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository" : { 
-    "type" : "git"
-  , "url" : "https://github.com/ChrisTheButcher/boerdam-generator.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChrisTheButcher/boerdam-generator.git"
   },
   "readme": "README.md",
   "author": "Boerdam",
   "license": "ISC",
+  "files": [
+    "app",
+    "router"
+  ],
+  "keywords": ["yeoman-generator"],
   "devDependencies": {
     "browser-sync": "^2.7.10",
     "del": "^1.2.0",
@@ -38,5 +43,8 @@
     "gulp-watch": "^4.2.4",
     "imagemin-pngquant": "^4.1.0",
     "ms": "^0.7.1"
+  },
+  "dependencies": {
+    "yeoman-generator": "^0.20.1"
   }
 }
