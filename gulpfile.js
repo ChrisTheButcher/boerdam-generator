@@ -1,25 +1,17 @@
-/// <reference path="bower_components/ngstorage/ngStorage.js" />
-/// <binding />
-/// <vs SolutionOpened='default' />
-/// <reference path="Assets/vendors/angular-i18n/angular-locale_nl-nl.js" />
-
 // Require
-var gulp = require('gulp'),
-del = require('del'),
-browserSync = require('browser-sync'),
-pngquant = require('imagemin-pngquant'),
-$ = require("gulp-load-plugins")({
-    pattern: ['gulp-*', 'gulp.*'],
-    replaceString: /\bgulp[\-.]/
-})
+var gulp = require('gulp');
+var del = require('del');
+var browserSync = require('browser-sync');
+var pngquant = require('imagemin-pngquant');
+var $ = require("gulp-load-plugins")();
 
 // Config
-prefixOptions = ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
-onError = function (err) {
+var onError = function (err) {
     $.util.log($.util.colors.green(err));
     this.emit('end'); //continue the process in watch
 };
-paths = {
+var config = {
+    prefixOptions: ['last 2 version', 'ie 9'],
     bower: './bower_components',
     node: './node_modules',
     src: './Assets/src',
@@ -32,12 +24,8 @@ gulp.task('init', function () {
 });
 
 // Browser sync server
-gulp.task('browser-sync', function() {
-    browserSync.init({
-        server: {
-            baseDir: "./"
-        }
-    });
+gulp.task('serve', function() {
+    browserSync.init({ server: { baseDir: "./" } });
 });
 
 // Concatenate JS-files
@@ -95,7 +83,7 @@ var stylesStream = function (source, name) {
     return gulp.src(source)
         .pipe($.sass().on('error', onError))
         .pipe($.sourcemaps.init())
-        //.pipe($.autoprefixer(prefixOptions))
+        .pipe($.autoprefixer(prefixOptions))
         .pipe($.combineMediaQueries()) // Combine media queries
         .pipe($.rename({ basename: name, suffix: '.min' }))
         .pipe($.importCss({ extensions: ["!sass", "!scss"] })) // parse css import directives and insert 
@@ -103,8 +91,7 @@ var stylesStream = function (source, name) {
         .pipe($.sourcemaps.write('/Maps'), { sourceMappingURLPrefix: paths.dist + '/Css' })
         .pipe(gulp.dest(paths.dist + '/Css/'))
         .pipe($.filter('*.css'))
-        .pipe($.notify({  message: 'Updated ' + name + '.min.css', onLast: true }))
-        .pipe($.size())
+        .pipe($.size({ title: ''Updated ' + name + '.min.css'' }))
         .pipe(browserSync.reload({ stream: true }))
 };
 
