@@ -2,6 +2,7 @@
 And assets folder structure
 
 * To install enter following command *
+
 ``` bower install -D boerdam-gulpfile ```
 
 #### Tasks
