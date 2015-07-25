@@ -7,7 +7,7 @@ And assets folder structure
 ### Tasks
 ---
 - `Gulp`
-  - Main task
+  - Default task
 - `gulp scripts`
   - Concat
   - Minify
