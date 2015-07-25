@@ -1,7 +1,7 @@
 # boerdam-gulpfile
 And assets folder structure
 
-## Install with Bower
+## Install with [http://bower.io]{Bower}
 ` bower install -D boerdam-gulpfile `
 
 ### Tasks
@@ -35,3 +35,7 @@ And assets folder structure
   - For faster development use the development flag. for example: `gulp watch --development` or `gulp --development`
   - Make sure to run `gulp` without the development flag before distributing
   - Doesn't run autoprefixer, minify, etc.
+
+#### Credits
+Github community
+[http://boerdam.nl]{Boerdam}
