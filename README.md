@@ -1,7 +1,7 @@
 # boerdam-gulpfile
 And assets folder structure
 
-## Install with [http://bower.io]{Bower}
+## Install with [Bower](http://bower.io)
 ` bower install -D boerdam-gulpfile `
 
 ### Tasks
@@ -38,4 +38,5 @@ And assets folder structure
 
 #### Credits
 Github community
-[http://boerdam.nl]{Boerdam}
+
+[Boerdam](http://boerdam.nl)
