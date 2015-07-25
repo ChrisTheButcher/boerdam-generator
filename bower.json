@@ -1,10 +1,10 @@
 {
-  "name": "boerdam-project",
+  "name": "boerdam-gulpfile",
   "version": "1.0.0",
   "authors": [
     "Boerdam"
   ],
-  "main": "gulpfile.json",
+  "main": "gulpfile.babel.js",
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -19,6 +19,12 @@
     "bootstrap-sass": "~3.3.4",
     "modernizr": "~2.8.3"
   },
-  "homepage": "https://github.com/ChrisTheButcher/boerdam-generator",
-  "description": "Boerdam web project generator for Yeoman"
+  "homepage": "https://github.com/ChrisTheButcher/boerdam-gulpfile",
+  "description": "Boerdam Gulpfile.js and folder structure for web projects",
+  "keywords": [
+    "Gulpfile",
+    "Gulp",
+    "Babel",
+    "Boerdam"
+  ]
 }

@@ -1,49 +1,148 @@
-// -----------------------------------------------------------------------------
-// This file contains all application-wide Sass mixins.
-// -----------------------------------------------------------------------------
-
-/// Event wrapper
-/// @author Harry Roberts
-/// @param {Bool} $self [false] - Whether or not to include current selector
-/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
-@mixin on-event($self: false) {
-  @if $self {
-    &,
-    &:hover,
-    &:active,
-    &:focus {
+// Breakpoints usage:
+// 
+// First argument: bp width
+// Second argument optional: min- or maxwidth (default min)
+//
+// example:
+//
+//  .bptest {
+//    @include bp($screen-md) {
+//      color: red;
+//    }
+//  }
+//
+// (c) christian wijnia
+@mixin bp($width, $minmax: min) {
+  @media screen and (#{$minmax}-width: $width) {
       @content;
-    }
-  } @else {
-    &:hover,
-    &:active,
-    &:focus {
-      @content;
-    }
   }
 }
 
-/// Make a context based selector a little more friendly
-/// @author Hugo Giraudel
-/// @param {String} $context
-@mixin when-inside($context) {
-  #{$context} & {
-    @content;
-  }
+//The Chris Grid
+@mixin grid-row($col-gutter: 0) {
+	@include clearfix;
+	margin-left:-$col-gutter / 2;
+	margin-right:-$col-gutter / 2;
+}
+@mixin grid-col($col-span:6, $col-total:12, $col-gutter: 0){
+	width:percentage($col-span / $col-total);
+	float:left;
+	padding-left:$col-gutter / 2;
+	padding-right:$col-gutter / 2;
 }
 
-/// Responsive manager
-/// @param {String} $breakpoint - Breakpoint
-/// @requires $breakpoints
-/// @link http://sass-guidelin.es/#breakpoint-manager Sass Guidelines - Breakpoint Manager
-@mixin respond-to($breakpoint) {
-  $query: map-get($breakpoints, $breakpoint);
-  
-  @if not $query {
-    @error 'No value found for `#{$breakpoint}`. Please make sure it is defined in `$breakpoints` map.';
-  }
+// Position
+@mixin abs($top: 0, $right: $top, $bottom: $top, $left: $top) {
+  position:absolute;
+  top:$top; right:$right; bottom:$bottom; left:$left;
+}
 
-  @media #{if(type-of($query) == 'string', unquote($query), inspect($query))} {
-    @content;
-  }
+@mixin fxd($top:0, $right: $top, $bottom: $top, $left: $top) {
+  position:fixed;
+  top:$top; right:$right; bottom:$bottom; left:$left;
+}
+
+@mixin middle-align {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+}
+
+// Type
+@mixin text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+@mixin h {
+	h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 { @content; }
+}
+
+@mixin reset-space {
+    margin:0;
+    padding:0;
+}
+
+// Dimensions
+@mixin size($width: 100%, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+// States helper
+@mixin states($self: false, $hoverClass: false) {
+    @if $hoverClass {
+        $extraClass: ', &.hover';
+    } @else {
+        $extraClass: null;
+    }
+
+    @if $self {
+        &, &:focus, &:active, &:hover #{$extraClass} {
+            @content;
+        }
+    } @else {
+        &:focus, &:active, &:hover #{$extraClass} {
+            @content;
+        }
+    }
+}
+
+@mixin color-hover($color) {
+    color: $color;
+    &:hover { color: darken($color, 15%); }
+}
+
+// Create close icons
+@mixin close-icon(
+    $size: $space-sm, 
+    $color: $space,
+    $border: ($size / 10)
+) {
+    @include reset-space;
+    width: $size;
+    height: $size;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+
+    &:before, &:after {
+        height: $border;
+        display: block;
+        top: 50%;
+        position: absolute;
+        width: 100%;
+        content: '';
+        background: $color;
+        transition: all 0.15s ease-in-out;
+        margin-top: -($border/2)
+    }
+
+    @include states { &:before, &:after { background: darken($color, 15%); } }
+    &:active { &:before,&:after { transform: rotate(0); }  }
+
+    &:before { transform: rotate(45deg); }
+    &:after { transform: rotate(-45deg); }
+}
+
+// Borders
+@mixin border-top-radius($value: 5px) {
+    border-top-left-radius: $value;
+    border-top-right-radius: $value;
+}
+@mixin border-right-radius($value: 5px) {
+    border-top-right-radius: $value;
+    border-bottom-right-radius: $value;
+}
+@mixin border-bottom-radius($value: 5px) {
+    border-bottom-left-radius: $value;
+    border-bottom-right-radius: $value;
+}
+@mixin border-left-radius($value: 5px) {
+    border-top-left-radius: $value;
+    border-bottom-left-radius: $value;
 }

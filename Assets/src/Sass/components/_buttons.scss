@@ -1,3 +1,19 @@
-// -----------------------------------------------------------------------------
-// This file contains all styles related to the button component.
-// -----------------------------------------------------------------------------
+.btn {
+	@extend %reset-btn;
+	
+	transition: .15s ease;
+	border-radius: 5px;
+	background: papayawhip;
+	border: 1px solid darken(papayawhip, 15%);
+	margin: 0.5em;
+	font-size: 0.75em;
+	
+	@include bp($screen-sm) {
+		font-size: 1em; 
+	}
+	
+	&:hover {
+		box-shadow: 0 0.25em 0.75em rgba(black, 0.33);
+		transform: translateY(5%);
+	}
+}
