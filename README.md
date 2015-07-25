@@ -1,11 +1,10 @@
 # boerdam-gulpfile
 And assets folder structure
 
-*To install enter following command*
-
+## Install with Bower
 ` bower install -D boerdam-gulpfile `
 
-## Tasks
+### Tasks
 - `Gulp`
   - Main task
 - `gulp scripts`
@@ -29,7 +28,7 @@ And assets folder structure
 - `Gulp clean`
   - Cleans dist folder
 
-## Other features
+### Other features
 - `--development` mode
   - For faster development use the development flag. for example: `gulp watch --development` or `gulp --development`
   - Make sure to run `gulp` without the development flag before distributing
