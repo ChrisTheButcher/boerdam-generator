@@ -4,7 +4,11 @@ And assets folder structure
 ## Install with [Bower](http://bower.io)
 ` bower install -D boerdam-gulpfile `
 
-### Tasks
+<sup>
+  First time make sure to run `npm update && bower install`
+</sup>
+
+### Tasks Usage
 ---
 - `Gulp`
   - Default task
