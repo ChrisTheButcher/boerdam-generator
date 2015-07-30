@@ -20,7 +20,7 @@ const nowString = `${now.getDate()}-${now.getMonth() + 1 * 1}-${now.getFullYear(
 const config = {
     development: !!$.util.env.development || !!$.util.env.dev,
     banner: `\n/* developed by boerdam - last changed ${nowString} */\n\n`,
-    prefixOptions: ['last 2 version', 'ie 9'],
+    prefixOptions: ['last 2 version', 'ie >= 9'],
     bower: './bower_components',
     node: './node_modules',
     src: './Assets/src',
